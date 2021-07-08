@@ -56,7 +56,8 @@ public class MercadoPagoService {
     private Payer getPayer(){
 
         Payer payer = new Payer();
-        payer.setName("Lalo Landa");
+        payer.setName("Lalo");
+        payer.setSurname("Landa");
 
         payer.setEmail("test_user_83958037@testuser.com");
 
