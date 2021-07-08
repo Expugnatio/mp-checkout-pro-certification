@@ -1,0 +1,15 @@
+  server:
+    servlet:
+      context-path: /checkout-pro
+  spring:
+    web:
+      resources:
+        static-locations: classpath:/WEB-INF/static/
+    mvc:
+      view:
+        prefix: classpath:/WEB-INF/jsp/
+        suffix: .jsp
+      static-path-pattern: /static/**
+    thymeleaf:
+      prefix: classpath:/WEB-INF/jsp/
+      suffix: .jsp
