@@ -73,6 +73,11 @@ public class MercadoPagoService {
 
         payer.setPhone(phone);
 
+        Identification identification = new Identification();
+        identification.Identification("CC","681094118");
+
+        payer.setIdentification(identification);
+
         return payer;
     }
 
