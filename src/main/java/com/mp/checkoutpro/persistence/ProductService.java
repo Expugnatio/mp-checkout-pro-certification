@@ -9,10 +9,10 @@ import java.util.List;
 public class ProductService {
     private static final List<ProductEntity> productList = new ArrayList<ProductEntity>(){
         {
-            add(new ProductEntity("1","Samsung",8000,"Dispositivo móvil de Tienda e-commerce"));
-            add(new ProductEntity("2","HTC",5000,"Dispositivo móvil de Tienda e-commerce"));
-            add(new ProductEntity("3","Apple",9999,"Dispositivo móvil de Tienda e-commerce"));
-            add(new ProductEntity("4","Motorola",3000,"Dispositivo móvil de Tienda e-commerce"));
+            add(new ProductEntity("1234","Samsung",80000,"Dispositivo móvil de Tienda e-commerce"));
+            add(new ProductEntity("1234","HTC",50000,"Dispositivo móvil de Tienda e-commerce"));
+            add(new ProductEntity("1234","Apple",99990,"Dispositivo móvil de Tienda e-commerce"));
+            add(new ProductEntity("1234","Motorola",30000,"Dispositivo móvil de Tienda e-commerce"));
         }
     };
 

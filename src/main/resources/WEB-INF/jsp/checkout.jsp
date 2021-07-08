@@ -7,7 +7,6 @@
 <body>
 
 <script src="https://sdk.mercadopago.com/js/v2"></script>
-<script src="https://www.mercadopago.com/v2/security.js" view="checkout"></script>
 
 <header th:replace="main :: header"/>
 
@@ -33,7 +32,7 @@
 <script th:inline="javascript">
     // Agrega credenciales de SDK
     const mp = new MercadoPago('APP_USR-a98b17ae-47a6-4a35-b92d-01919002b97e', {
-        locale: 'es-AR'
+        locale: 'es-CO'
     });
 
     // Inicializa el checkout
@@ -48,5 +47,6 @@
     });
 </script>
 <footer th:insert="main :: footer"></footer>
+<script src="https://www.mercadopago.com/v2/security.js" view="checkout"></script>
 </body>
 </html>

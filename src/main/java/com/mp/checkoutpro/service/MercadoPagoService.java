@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MercadoPagoService {
 
+    private static final String appBaseUrl = "https://mp-checkout-pro-certification.herokuapp.com/checkout-pro";
     private static final String imageUrl = "https://vivirenelpoblado.com/wp-content/uploads/Celulares--696x464.jpg";
     private static final String email = "chris.hrdez@gmail.com";
 
@@ -23,15 +24,28 @@ public class MercadoPagoService {
 
         preference.setPayer(getPayer());
 
+        preference.setPaymentMethods(getPaymentMethods());
+
         preference.setBackUrls(getBackUrls());
         preference.setAutoReturn(Preference.AutoReturn.approved);
+
+        preference.setNotificationUrl(appBaseUrl + "/webhook");
 
         return preference.save();
     }
 
+    private PaymentMethods getPaymentMethods() {
+        PaymentMethods paymentMethods = new PaymentMethods();
+        paymentMethods.appendExcludedPaymentMethod(new ExcludedPaymentMethod("amex"));
+        paymentMethods.appendExcludedPaymentTypes(new ExcludedPaymentType("atm"));
+        paymentMethods.setInstallments(6);
+        return paymentMethods;
+    }
+
     private Item getItem(ProductEntity product){
         Item item = new Item();
-        item.setTitle(product.getName())
+        item.setId(product.getId())
+            .setTitle(product.getName())
             .setUnitPrice(product.getPrice())
             .setDescription(product.getDescription())
             .setCategoryId("phones")
@@ -42,8 +56,7 @@ public class MercadoPagoService {
     private Payer getPayer(){
 
         Payer payer = new Payer();
-        payer.setName("Lalo");
-        payer.setSurname("Landa");
+        payer.setName("Lalo Landa");
 
         payer.setEmail("test_user_83958037@testuser.com");
 
@@ -58,14 +71,16 @@ public class MercadoPagoService {
         phone.setAreaCode("52");
         phone.setNumber("5549737300");
 
+        payer.setPhone(phone);
+
         return payer;
     }
 
     private BackUrls getBackUrls(){
         BackUrls backUrls = new BackUrls();
-        backUrls.setSuccess("https://hookb.in/b99PrwK0ROtKGq00GQpd");
-        backUrls.setPending("https://hookb.in/b99PrwK0ROtKGq00GQpd");
-        backUrls.setFailure("https://hookb.in/b99PrwK0ROtKGq00GQpd");
+        backUrls.setSuccess(appBaseUrl + "/comeback");
+        backUrls.setPending(appBaseUrl + "/comeback");
+        backUrls.setFailure(appBaseUrl + "/comeback");
 
         return backUrls;
     }

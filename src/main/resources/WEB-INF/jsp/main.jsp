@@ -92,7 +92,7 @@
             </div>
             <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
                 <form action="#" th:action="@{/checkout}" th:object="${order}" method="post">
-                    <input type="hidden" id="product.id" name="product.id" th:value="1"/>
+                    <input type="hidden" id="product.id" name="product.id" th:value="1234"/>
                     <p>Quantity: <input type="number" th:field="*{quantity}" step="1"/></p>
                     <p><input type="submit" value="Comprar"/></p>
                 </form>
